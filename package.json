@@ -1,0 +1,35 @@
+{
+  "name": "allmax",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/stgoge/allmax.git"
+  },
+  "author": "German",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stgoge/allmax/issues"
+  },
+  "homepage": "https://github.com/stgoge/allmax#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "joi": "^13.4.0",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.2.2",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}
