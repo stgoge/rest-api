@@ -19,7 +19,7 @@ By default creates admin/admin in db with access to all records.
 
 Routes:
 -------
-### /signup ###
+### post /signup ###
 http request body:
 ```
 {
@@ -28,7 +28,7 @@ http request body:
 }
 ```
 respond: token
-### /signin ###
+### post /signin ###
 http request body:
 ```
 {
