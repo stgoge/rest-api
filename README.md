@@ -10,8 +10,8 @@ $ node app.js
 You can use package.json command:
 ```
 $ npm start
+$ npm test //comig soon
 ```
-_$ npm test //comig soon_
 
 Setup your MongoDb settings in mongo-settings-default.js (rename to mongo-settings.js)
 
