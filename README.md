@@ -38,7 +38,7 @@ http request body:
 ```
 respond: token
 ### get /records?status= &priority= ###
-query values are optional
+_query values are optional_  
 http request header:
 ```
 {
