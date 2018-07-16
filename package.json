@@ -30,6 +30,8 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
     "nodemon": "^1.17.5"
   }
 }
