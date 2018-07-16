@@ -11,6 +11,8 @@ You can use package.json command:
 ```
 $ npm start
 ```
+_$ npm test //comig soon_
+
 Setup your MongoDb settings in mongo-settings-default.js (rename to mongo-settings.js)
 
 Authorization with JWT, token expects in authorization header.
