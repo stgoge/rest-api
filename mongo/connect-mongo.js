@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const settings = require('./mongo-settings');
+const config = require('config');
 
 const ConnectionMessage = {
   SUCCESS: 'MongoDB connected',
@@ -10,11 +10,11 @@ const ConnectionMessage = {
 const NO_CONNECTION_MESSAGE = 'no db connection, try again later';
 const NO_CONNECTION_ERROR = 503;
 const RECONNECT_INTERVAL = 10000;
-const CONNECTION_STRING = `mongodb://${settings.PATH}`;
+const CONNECTION_STRING = `mongodb://${config.DB_PATH}`;
 const OPTIONS = {
-  user: settings.USER,
-  pass: settings.PASSWORD,
-  dbName: settings.NAME,
+  user: config.DB_USER,
+  pass: config.DB_PASSWORD,
+  dbName: config.DB_NAME,
   reconnectTries: Number.MAX_VALUE,
   reconnectInterval: RECONNECT_INTERVAL,
   useNewUrlParser: true,
