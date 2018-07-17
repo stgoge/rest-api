@@ -111,7 +111,7 @@ describe('Routes', async () => {
         try {
           const result = await chai
             .request(app.server)
-            .get(records)
+            .post(records)
             .set('Authorization', token)
             .send(emptyRecord);
         } catch (error) {
@@ -122,7 +122,7 @@ describe('Routes', async () => {
         try {
           const result = await chai
             .request(app.server)
-            .get(records)
+            .post(records)
             .set('Authorization', token)
             .send(testRecord);
           expect(result.status).to.be.equal(200);
@@ -140,7 +140,7 @@ describe('Routes', async () => {
           expect(error.response.text).to.equal('Unauthorized');
         }
       });
-      it('with token. should return status 200', async () => {
+      it('with token. should return status 200 and 1 record', async () => {
         try {
           const result = await chai
             .request(app.server)
@@ -148,7 +148,7 @@ describe('Routes', async () => {
             .set('Authorization', token);
           expect(result.status).to.equal(200);
           expect(result.body).to.a('array');
-          expect(result.body.length).to.eql(0);
+          expect(result.body.length).to.eql(1);
         } catch (error) {
           throw new Error(error);
         }
