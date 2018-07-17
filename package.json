@@ -4,9 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "mocha --timeout 10000",
-    "dev": "nodemon app.js",
-    "start": "SET NODE_ENV=dev&& node app.js"
+    "test": "mocha --timeout 5000",
+    "dev": "nodemon index.js",
+    "start": "SET NODE_ENV=dev&& node index.js"
   },
   "repository": {
     "type": "git",

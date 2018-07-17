@@ -9,7 +9,7 @@ const ConnectionMessage = {
 };
 const NO_CONNECTION_MESSAGE = 'no db connection, try again later';
 const NO_CONNECTION_ERROR = 503;
-const RECONNECT_INTERVAL = 10000;
+const RECONNECT_INTERVAL = 1;
 const CONNECTION_STRING = `mongodb://${config.DB_PATH}`;
 const OPTIONS = {
   user: config.DB_USER,
@@ -36,13 +36,14 @@ mongoose.connection.once('open', () => {
   });
 });
 
-const connectMongo = (tryCounter) => {
+const connectMongo = async (tryCounter) => {
   tryCounter = (tryCounter !== undefined) ? tryCounter + 1 : 0;
-  mongoose.connect(CONNECTION_STRING, OPTIONS)
+  await mongoose.connect(CONNECTION_STRING, OPTIONS)
     .catch(() => {
       console.log(`Trying to connect (${tryCounter})`);
       setTimeout(connectMongo, RECONNECT_INTERVAL, tryCounter);
     });
+  return mongoose;
 };
 
 const checkDbConnection = (req, res, next) => {
