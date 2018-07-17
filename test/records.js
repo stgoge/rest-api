@@ -96,9 +96,10 @@ describe('Routes', async () => {
     });
   });
   describe('records', async () => {
+    let recordID;
+    const emptyRecord = { status: '1', priority: '2' };
     describe('post', async () => {
       const testRecord = { record: 'test record', status: '1', priority: '2' };
-      const emptyRecord = { status: '1', priority: '2' };
       it('without token. should return status 401', async () => {
         try {
           await chai.request(app.server).post(records).send(testRecord);
@@ -149,6 +150,53 @@ describe('Routes', async () => {
           expect(result.status).to.equal(200);
           expect(result.body).to.a('array');
           expect(result.body.length).to.eql(1);
+          recordID = result.body[0]['_id'];
+        } catch (error) {
+          throw new Error(error);
+        }
+      });
+    });
+    describe('put', async () => {
+      const updatedRecord = { record: 'updated', status: '1', priority: '2' };
+      it('without token. should return status 401', async () => {
+        try {
+          await chai.request(app.server).put(records).send(updatedRecord).send(recordID);
+        } catch (error) {
+          expect(error.status).to.equal(401);
+          expect(error.response.text).to.equal('Unauthorized');
+        }
+      });
+      it('with token, recordID and empty record. should return status 400', async () => {
+        try {
+          const result = await chai
+            .request(app.server)
+            .put(records)
+            .set('Authorization', token)
+            .send(emptyRecord);
+        } catch (error) {
+          expect(error.status).to.equal(400);
+        }
+      });
+      it('with token, correct record and empty recordID. should return status 400', async () => {
+        try {
+          const result = await chai
+            .request(app.server)
+            .put(records)
+            .set('Authorization', token)
+            .send(updatedRecord);
+        } catch (error) {
+          expect(error.status).to.equal(400);
+        }
+      });
+      it('with token, correct record and correct recordID. should return status 200', async () => {
+        try {
+          updatedRecord.recordID = recordID;
+          const result = await chai
+            .request(app.server)
+            .put(records)
+            .set('Authorization', token)
+            .send(updatedRecord);
+          expect(result.status).to.equal(200);
         } catch (error) {
           throw new Error(error);
         }
