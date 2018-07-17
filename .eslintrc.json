@@ -1,0 +1,14 @@
+{
+    "extends": "airbnb-base",
+    "rules": {
+      "linebreak-style": [
+          "error",
+          "windows"
+      ],
+      "no-param-reassign": [
+        "error", 
+        { "props": true,
+        "ignorePropertyModificationsFor": [ "user", "req", "tryCounter" ]
+        }]
+  }
+}
